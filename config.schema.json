@@ -1,15 +1,31 @@
 {
-  "pluginAlias": "ExampleHomebridgePlugin",
+  "pluginAlias": "Xcomfort",
   "pluginType": "platform",
   "singular": true,
   "schema": {
     "type": "object",
     "properties": {
-      "name": {
-        "title": "Name",
+      "ip": {
+        "title": "SHC IP Address",
         "type": "string",
         "required": true,
-        "default": "Example Dynamic Platform"
+        "placeholder": "192.168.1.100",
+        "format": "ipv4"
+      },
+      "user": {
+        "title": "Username",
+        "type": "string",
+        "required": true
+      },
+      "password": {
+        "title": "Password",
+        "type": "string",
+        "required": true
+      },
+      "zone": {
+        "title": "Zone ID",
+        "type": "string",
+        "required": true
       }
     }
   }
