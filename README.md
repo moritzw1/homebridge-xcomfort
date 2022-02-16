@@ -1,7 +1,6 @@
 # homebridge-xcomfort
 
 [![Npm package version](https://badgen.net/npm/v/homebridge-xcomfort)](https://npmjs.com/package/homebridge-xcomfort)
-[![Npm package total downloads](https://badgen.net/npm/dt/homebridge-xcomfort)](https://www.npmjs.com/package/homebridge-xcomfort)
 
 `homebridge-xcomfort` is a [Homebridge](https://homebridge.io) plugin that exposes Eaton Xcomfort devices to [Apple's](https://www.apple.com) [HomeKit](https://www.apple.com/ios/home) smart home platform.
 
