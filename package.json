@@ -1,6 +1,5 @@
 {
-  "private": true,
-  "displayName": "Eaton Xcomfort",
+  "displayName": "Xcomfort",
   "name": "homebridge-xcomfort",
   "description": "",
   "version": "1.0.0",
