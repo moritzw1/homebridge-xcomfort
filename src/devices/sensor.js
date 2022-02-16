@@ -1,8 +1,6 @@
 const PLUGIN_NAME = 'homebridge-xcomfort';
 const PLATFORM_NAME = 'Xcomfort';
 
-// Could be a Light Switch (withouth dimming capabilities) or normal Switch
-
 class Sensor {
   constructor(data) {
     this.api = data?.api

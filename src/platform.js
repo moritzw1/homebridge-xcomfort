@@ -4,9 +4,6 @@ const Sensor = require('./devices/sensor');
 const StateActuator = require('./devices/stateActuator');
 const PullTimer = require("homebridge-http-base").PullTimer;
 
-const PLUGIN_NAME = 'homebridge-xcomfort';
-const PLATFORM_NAME = 'Xcomfort';
-
 class XcomfortPlatform {
   constructor(log, config, api) {
     this.log = log;
@@ -24,10 +21,6 @@ class XcomfortPlatform {
     this.sleepMode = false
 
     this.api.on('didFinishLaunching', () => {
-
-      // this.api.unregisterPlatformAccessories(PLUGIN_NAME, PLATFORM_NAME, this.accessories);
-      // return
-
       const { ip, user, password } = this.config
 
       const config = {
@@ -63,7 +56,6 @@ class XcomfortPlatform {
     this.pullTimer.start();
 
     this.sleepTimer = new PullTimer(this.log, 300000, () => {
-      // this.log.info('Going to sleep zzzz...')
       this.sleepMode = true
       this.pullTimer.stop()
       this.sleepPullTimer.start()
@@ -77,8 +69,6 @@ class XcomfortPlatform {
 
   getDevices = async (zone) => {
     const devices = await this.xapi.query('StatusControlFunction/getDevices', [`hz_${zone}`, ''])
-
-    // this.log.info('Update devices...')
 
     if (this.pullTimer) this.pullTimer.resetTimer()
     if (this.sleepPullTimer) this.sleepPullTimer.resetTimer()
@@ -152,8 +142,6 @@ class XcomfortPlatform {
   onDeviceWasActive = () => {
     if (!this.sleepMode) return
     this.sleepMode = false
-
-    // this.log.info('Wake up! Pulling devices faster now')
 
     this.pullTimer.start()
     this.sleepPullTimer.stop()
