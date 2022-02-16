@@ -10,22 +10,39 @@
         "type": "string",
         "required": true,
         "placeholder": "192.168.1.100",
-        "format": "ipv4"
+        "format": "ipv4",
+        "description": "IP Address of the Smart Home Controller in your local network. You can find this in your Router menu"
       },
       "user": {
         "title": "Username",
         "type": "string",
-        "required": true
+        "required": true,
+        "description": "A user that you can create in the SHC menu."
       },
       "password": {
-        "title": "Password",
+        "title": "User Password",
         "type": "string",
         "required": true
       },
       "zone": {
         "title": "Zone ID",
         "type": "string",
-        "required": true
+        "required": true,
+        "description": "Please create a new Zone and add all the devices you want to control with HomeKit to this zone. Then go to tab '3 Advanced' -> tab 'Functions' -> Select your new created zone and enable the checkmark for 'Status and Switch'. Scroll down and you can see 'Latest action' at the bottom of the page. There is your zone (e.g. hz_14). Enter only the number: 14"
+      },
+      "intervalActive": {
+        "title": "Pull Interval",
+        "type": "number",
+        "required": true,
+        "placeholder": "15 (Interval in Seconds)",
+        "description": "This is the interval for the homebridge to fetch new data from the SHC."
+      },
+      "intervalSleep": {
+        "title": "Sleep Pull Interval",
+        "type": "number",
+        "required": true,
+        "placeholder": "60 (Interval in Seconds)",
+        "description": "This plugin will go to 'Sleep mode' and decrease the requests to the SHC after 5 Minutes of inactivity on the Home app."
       }
     }
   }
