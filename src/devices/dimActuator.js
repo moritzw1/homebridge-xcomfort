@@ -9,7 +9,6 @@ class DimActuator {
     this.device = data?.device
     this.zone = data?.zone
     this.xapi = data?.xapi
-    this.config = data?.config
     this.wasActiveFunc = data?.onDeviceWasActive
 
     this.Service = this.api.hap.Service;
@@ -87,9 +86,6 @@ class DimActuator {
 
         return this.brightness
       })
-      .setProps({
-        minStep: parseInt(this.config?.step) || 1
-      });
   }
 }
 

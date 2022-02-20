@@ -87,7 +87,6 @@ class XcomfortPlatform {
         api: this.api,
         xapi: this.xapi,
         zone: `hz_${zone}`,
-        config: this.config,
         onDeviceWasActive: () => this.onDeviceWasActive()
       }
 
@@ -106,6 +105,9 @@ class XcomfortPlatform {
           if (deviceService) {
             deviceService.updateCharacteristic(this.Characteristic.On, accessory.context.isOn);
             deviceService.updateCharacteristic(this.Characteristic.Brightness, accessory.context.brightness);
+            deviceService.getCharacteristic(this.Characteristic.Brightness).setProps({
+              minStep: parseInt(this.config?.step) || 1
+            });
           }
         }
       }
