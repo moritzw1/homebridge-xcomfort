@@ -87,6 +87,7 @@ class XcomfortPlatform {
         api: this.api,
         xapi: this.xapi,
         zone: `hz_${zone}`,
+        config: this.config,
         onDeviceWasActive: () => this.onDeviceWasActive()
       }
 

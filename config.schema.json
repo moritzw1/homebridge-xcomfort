@@ -43,6 +43,13 @@
         "required": true,
         "placeholder": "60 (Interval in Seconds)",
         "description": "This plugin will go to 'Sleep mode' and decrease the requests to the SHC after 5 Minutes of inactivity on the Home app."
+      },
+      "step": {
+        "title": "Dim Actuator Step",
+        "type": "number",
+        "required": true,
+        "placeholder": "Default: 1",
+        "description": "Step size for setting the brightness on a Dim Actuator (For example setting this to 5 you can set the brightness in the Home App to: 5%, 10%, 15%, 20% etc.)"
       }
     }
   }
