@@ -69,7 +69,7 @@ class DimActuator {
 
     this.deviceService.getCharacteristic(this.Characteristic.Brightness)
       .onSet(async (state) => {
-        if (this.onInProgress) return
+        if (this.onInProgress && !this.prevIsOn && state === 100) return
         this.brightnessInProgress = true
 
         this.brightness = state

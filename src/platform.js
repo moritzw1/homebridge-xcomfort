@@ -93,9 +93,10 @@ class XcomfortPlatform {
       this.devices.push({ ...device, uuid })
 
       if (type === 'DimActuator') {
+        let isOn, brightness;
         if (accessory?.context) {
-          accessory.context.isOn = !!parseInt(device?.value) > 0
-          accessory.context.brightness = parseInt(device?.value)
+          isOn = !!parseInt(device?.value) > 0
+          brightness = parseInt(device?.value)
         }
 
         new DimActuator(dataForDevice)
@@ -103,8 +104,10 @@ class XcomfortPlatform {
         if (accessory) {
           const deviceService = accessory.getService(this.Service.Lightbulb);
           if (deviceService) {
-            deviceService.updateCharacteristic(this.Characteristic.On, accessory.context.isOn);
-            deviceService.updateCharacteristic(this.Characteristic.Brightness, accessory.context.brightness);
+            deviceService.updateCharacteristic(this.Characteristic.On, isOn);
+            if (parseInt(brightness) > 0) {
+              deviceService.updateCharacteristic(this.Characteristic.Brightness, brightness);
+            }
             deviceService.getCharacteristic(this.Characteristic.Brightness).setProps({
               minStep: parseInt(this.config?.step) || 1
             });
