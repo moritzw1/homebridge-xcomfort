@@ -41,6 +41,9 @@ class DimActuator {
   updateAllCharacteristics = () => {
     this.deviceService.getCharacteristic(this.Characteristic.On)
       .onSet(async (state) => {
+
+        await new Promise(resolve => setTimeout(resolve, 100));
+
         if (this.brightnessInProgress) return
         this.onInProgress = true
         this.prevIsOn = this.isOn
